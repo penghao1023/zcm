@@ -127,7 +127,8 @@ function zcm(zcmtypes, zcmurl)
                 rehashTypes(zcmtypes[type]);
                 continue;
             }
-            parent.zcmtypeHashMap[zcmtypes[type].__get_hash_recursive()] = zcmtypes[type];
+            const hash = zcmtypes[type].__get_hash_recursive();
+            zcmtypeHashMap[hash] = { __type: type, ...zcmtypes[type] };
         }
     }
     rehashTypes(zcmtypes);
